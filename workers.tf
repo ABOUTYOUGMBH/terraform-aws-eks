@@ -317,7 +317,7 @@ resource "aws_security_group" "workers" {
   count       = var.worker_create_security_group && var.create_eks ? 1 : 0
   name_prefix = var.cluster_name
   description = "Security group for all nodes in the cluster."
-  vpc_id      = var.vpc_id
+  vpc_id      = data.aws_ssm_parameter.vpc_id.value
   tags = merge(
     var.tags,
     {
