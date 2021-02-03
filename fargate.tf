@@ -8,7 +8,7 @@ module "fargate" {
   permissions_boundary              = var.permissions_boundary
   iam_path                          = var.iam_path
   iam_policy_arn_prefix             = local.policy_arn_prefix
-  subnets                           = var.subnets
+  subnets                           = split(",", data.aws_ssm_parameter.vpc_private_subnets.value)
   tags                              = var.tags
 
   # Hack to ensure ordering of resource creation.

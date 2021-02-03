@@ -16,8 +16,7 @@ resource "aws_eks_cluster" "this" {
 
   vpc_config {
     security_group_ids      = compact([local.cluster_security_group_id])
-    subnet_ids              = concat(var.subnets,
-                                     split(",", data.aws_ssm_parameter.vpc_private_subnets.value),
+    subnet_ids              = concat(split(",", data.aws_ssm_parameter.vpc_private_subnets.value),
                                      split(",", data.aws_ssm_parameter.vpc_public_subnets.value)
                                     )
     endpoint_private_access = var.cluster_endpoint_private_access
