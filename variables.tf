@@ -375,3 +375,9 @@ variable "cluster_service_ipv4_cidr" {
   type        = string
   default     = null
 }
+
+variable "vpc_key" {
+  description = "[AYCP] VPC key for subnet"
+  type        = string
+  default     = "a"
+}
