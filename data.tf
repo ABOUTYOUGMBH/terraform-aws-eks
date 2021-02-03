@@ -171,3 +171,15 @@ data "aws_iam_instance_profile" "custom_worker_group_launch_template_iam_instanc
 }
 
 data "aws_partition" "current" {}
+
+data "aws_ssm_parameter" "vpc_id" {
+  name = join("", ["/base/vpc/", var.vpc_key, "/vpc_id"]
+}
+
+data "aws_ssm_parameter" "vpc_public_subnets" {
+  name = join("", ["/base/vpc/", var.vpc_key, "/public_subnet_ids"]
+}
+
+data "aws_ssm_parameter" "vpc_private_subnets" {
+  name = join("", ["/base/vpc/", var.vpc_key, "/private_subnet_ids"]
+}
